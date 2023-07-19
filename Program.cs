@@ -18,7 +18,7 @@ public static unsafe class Program {
                 Console.WriteLine ("Error:Few Arg!");
             }
             Console.WriteLine ("Usage:ExecML ECX_HEX_Value EDX_HEX_Value ML_HEX ...");
-            Console.WriteLine ("Ex:ExecML 80000000 10 0f bc c1 0f bd da 88 dc c3");
+            Console.WriteLine ("Ex:ExecML 0x80000000 0x10 0f bc c1 0f bd ca 88 cc c3");
             Environment.Exit (1);
         }
         List<byte> bin = new List<byte> ();
