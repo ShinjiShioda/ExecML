@@ -3,12 +3,12 @@
 ---
 THIS PROGRAM BASED ON 
 [Unknown6656](https://gist.github.com/Unknown6656) / [execute-byte-array.cs](https://gist.github.com/Unknown6656/a42a810d4283208c3c21c632fb16c3f9)
+
 I am only write few codes.
 
 ---
 
-This is Machine Language codes execute program.You Can Run Machine Language codes on Console.
-これは、機械語を実行するコンソールプログラムです。コマンドラインに機械語コードを16進数で記述することで機械語関数を呼び出して実行します。
+This is Machine Language codes execute program.You Can Run Machine Language codes on Console.<BR>これは、機械語を実行するコンソールプログラムです。コマンドラインに機械語コードを16進数で記述することで機械語関数を呼び出して実行します。
 
 For example（例）
 
@@ -17,21 +17,15 @@ For example（例）
     88 cc                   mov    %cl,%ah
     c3                      ret
 
-We get hexadecimal codes "0F BC C1 0F BD CA 88 CC C3" .
+We get hexadecimal codes "0F BC C1 0F BD CA 88 CC C3".<BR>上記のプログラムから16進コード「0F BC C1 0F BD CA 88 CC C3」が作られます
 
-上記のプログラムから16進コード「0F BC C1 0F BD CA 88 CC C3」が作られます
-
-Now run to ECX=0x80000000, EDX=0x10.
-
-RCX、RDXレジスタに値を入れて実行します。
+Now run to ECX=0x80000000, EDX=0x10.<BR>RCX、RDXレジスタに値を入れて実行します。
 
     PS7.3>ExecML.exe 80000000 10 0f bc c1 0f bd ca 88 cc c3
     000000000000041F
     PS7.3>
 
-Machine Language Codes are called with x64 calling convention.
-
-機械語のルーチンは、x64呼び出し規則により呼び出されます。
+Machine Language Codes are called with x64 calling convention.<BR>機械語のルーチンは、x64呼び出し規則により呼び出されます。
 
 Reference/参考情報
 
@@ -40,9 +34,7 @@ Reference/参考情報
 [x64 での呼び出し規則 | Microsoft Learn](https://learn.microsoft.com/ja-jp/cpp/build/x64-calling-convention?view=msvc-170)
 
 ## How to Execute / 実行方法
-No install required.
-
-インストールは必要ありません。
+No install required.<BR>インストールは必要ありません。
 
     ExecML.exe ECX_HEX_Value EDX_HEX_Value HEX HEX ...
 
@@ -60,38 +52,28 @@ HEX :
 *    機械語コードを表す16進数をスペースで区切っていれてください。
 *    機械語コードの最後には、自動的にRET命令が付加され、これでメインプログラムに戻ります。
 
-Machine Language code executed in function.ExecML return RAX register value in HEX.
-
-機械語コードは、関数の中で実行されます。ExecMLは、戻ってきたRAXレジスタの内容を16進数で表示します。
+Machine Language code executed in function.ExecML return RAX register value in HEX.<BR>機械語コードは、関数の中で実行されます。ExecMLは、戻ってきたRAXレジスタの内容を16進数で表示します。
 
 ## How to Build / ビルド方法
 
-To build from source, You must install .NET SDK.
+To build from source, You must install .NET SDK.<BR>ソースコードをビルドするには.NET SDKが必要になります。
 
-ソースコードをビルドするには.NET SDKが必要になります。
-
-Use DOTNET command（.NET CLI） in .NET SDK.
-
-.NET SDKのDOTNETコマンド（.NET CLI）を使います。
+Use DOTNET command（.NET CLI） in .NET SDK.<BR>.NET SDKのDOTNETコマンド（.NET CLI）を使います。
 
 [.NET SDK の概要 | Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/core/sdk)
 
 [.NET SDK overview | Microsoft Learn]( https://learn.microsoft.com/en-US/dotnet/core/sdk)
 
-プログラムのビルド
+Build from source<BR>プログラムのビルド
 
-Build from source
 
     dotnet build -c release -r win-x64 --no-self-contained
 
-最終実行形式の作成
+Publish Code<BR>最終実行形式の作成
 
-Publish Code
 
     // exe directory is require at same directory with ExecML.csproj.
     dotnet publish -c release -r win-x64 -o .\exe --no-self-contained
 
 ## Exe file / 実行ファイル
-Execute file will be published on my [Blog](https://shinjishioda.blogspot.com/).
-
-実行ファイルは、筆者の[ブログ](https://shinjishioda.blogspot.com/)で公開予定です。
+Execute file will be published on my [Blog](https://shinjishioda.blogspot.com/).<BR>実行ファイルは、筆者の[ブログ](https://shinjishioda.blogspot.com/)で公開予定です。
