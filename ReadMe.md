@@ -1,10 +1,7 @@
 # Execute Machine Language Console Program “EXECML”<BR>機械語実行コンソールプログラム「ExecML」
 
 ---
-THIS PROGRAM BASED ON 
-[Unknown6656](https://gist.github.com/Unknown6656) / [execute-byte-array.cs](https://gist.github.com/Unknown6656/a42a810d4283208c3c21c632fb16c3f9)
-
-I am only write few codes.
+THIS PROGRAM BASED ON<BR>[Unknown6656](https://gist.github.com/Unknown6656) / [execute-byte-array.cs](https://gist.github.com/Unknown6656/a42a810d4283208c3c21c632fb16c3f9)<BR>I am only write few codes.
 
 ---
 
@@ -74,6 +71,3 @@ Publish Code<BR>最終実行形式の作成
 
     // exe directory is require at same directory with ExecML.csproj.
     dotnet publish -c release -r win-x64 -o .\exe --no-self-contained
-
-## Exe file / 実行ファイル
-Execute file will be published on my [Blog](https://shinjishioda.blogspot.com/).<BR>実行ファイルは、筆者の[ブログ](https://shinjishioda.blogspot.com/)で公開予定です。
