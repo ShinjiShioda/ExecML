@@ -17,14 +17,14 @@ public static unsafe class Program {
             } else {
                 Console.WriteLine ("Error:Few Arg!");
             }
-            Console.WriteLine ("Usage:ExecML ECX_HEX_Value EDX_HEX_Value ML_HEX ...");
+            Console.WriteLine ("Usage:ExecML RCX_HEX_Value RDX_HEX_Value ML_HEX ...");
             Console.WriteLine ("Ex:ExecML 0x80000000 0x10 0f bc c1 0f bd ca 88 cc c3");
             Environment.Exit (1);
         }
         List<byte> bin = new List<byte> ();
         byte[] asm;
-        uint ECX = Convert.ToUInt32 (argv[0], 16);
-        uint EDX = Convert.ToUInt32 (argv[1], 16);
+        UInt64 RCX = Convert.ToUInt64 (argv[0], 16);
+        UInt64 RDX = Convert.ToUInt64 (argv[1], 16);
         try {
             foreach (string x in argv.Skip (2)) { bin.Add (Convert.ToByte (x, 16)); }
         } catch {
@@ -34,14 +34,14 @@ public static unsafe class Program {
         bin.Add (0xC3); // C3=Ret. for safty. For to Able to run argv only ECX,EDX
         asm = bin.ToArray ();
         void * buffer = VirtualAlloc (null, asm.Length, 0x1000, 4);
-        var func = (delegate * < uint, uint, uint >) buffer;
-        int dummy;
+        var func = (delegate * < UInt64, UInt64, UInt64 >) buffer;
+        int oldProtect;
         Marshal.Copy (asm, 0, (nint) buffer, asm.Length);
-        VirtualProtect (buffer, asm.Length, 0x20, & dummy);
+        VirtualProtect (buffer, asm.Length, 0x20, & oldProtect);
         try {
             unchecked {
-                uint r = func (ECX, EDX);
-                Console.WriteLine ($"EAX={r.ToString("X8")}");
+                UInt64 RAX = func (RCX, RDX);
+                Console.WriteLine (RAX.ToString("X16"));
             }
             VirtualFree (buffer, 0, 0x8000);
         } finally {
