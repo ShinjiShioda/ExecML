@@ -1,4 +1,4 @@
-# EXECML Execute Machine Language Console Program  
+# Execute Machine Language Console Program “EXECML”<BR>機械語実行コンソールプログラム「ExecML」
 
 ---
 THIS PROGRAM BASED ON 
@@ -10,14 +10,14 @@ I am only write few codes.
 This is Machine Language codes execute program.You Can Run Machine Language codes on Console.
 これは、機械語を実行するコンソールプログラムです。コマンドラインに機械語コードを16進数で記述することで機械語関数を呼び出して実行します。
 
-For example
+For example（例）
 
     0f bc c1                bsf    %ecx,%eax
     0f bd ca                bsr    %edx,%ecx
     88 cc                   mov    %cl,%ah
     c3                      ret
 
-We get "0F BC C1 0F BD CA 88 CC C3"
+We get hexadecimal codes "0F BC C1 0F BD CA 88 CC C3"
 上記のプログラムから16進コード「0F BC C1 0F BD CA 88 CC C3」が作られます
 
 Now run to ECX=0x80000000, EDX=0x10
@@ -27,13 +27,14 @@ RCX、RDXレジスタに値を入れて実行します。
     000000000000041F
     PS7.3>
 
-Machine Language Codes rutine will call by x64 convention.
+Machine Language Codes are called with x64 calling convention.
+機械語のルーチンは、x64呼び出し規則により呼び出されます。
 
-Reference
+Reference/参考情報
 [x64 calling convention | Microsoft Learn](https://learn.microsoft.com/en-us/cpp/build/x64-calling-convention?view=msvc-170)
 [x64 での呼び出し規則 | Microsoft Learn](https://learn.microsoft.com/ja-jp/cpp/build/x64-calling-convention?view=msvc-170)
 
-### How to Execute
+## How to Execute / 実行方法
 
 No install required.
 インストールは必要ありません。
@@ -49,7 +50,7 @@ EDX_HEX_Value :
 * 機械語関数に渡される２つめの引数。これはEDXレジスタにセットされます。
 
 HEX : 
-* Machine Language Codes in Hexiaditimal.
+* Machine Language Codes in hexadecimal.
 * RET(0xC3) instruction add to Code. It return to main program.
 *    機械語コードを表す16進数をスペースで区切っていれてください。
 *    機械語コードの最後には、自動的にRET命令が付加され、これでメインプログラムに戻ります。
@@ -57,7 +58,7 @@ HEX :
 Machine Language code executed in function.ExecML return RAX register value in HEX.
 機械語コードは、関数の中で実行されます。ExecMLは、戻ってきたRAXレジスタの内容を16進数で表示します。
 
-### How to Build
+## How to Build / ビルド方法
 
 To build from source, You must install .NET SDK
 Use DOTNET command（.NET CLI） in .NET SDK
@@ -75,3 +76,7 @@ Publish Code
 
     // exe directory is require at same directory with ExecML.csproj.
     dotnet publish -c release -r win-x64 -o .\exe --no-self-contained
+
+## Exe file / 実行ファイル
+Execute file will be published on my [Blog](https://shinjishioda.blogspot.com/).
+実行ファイルは、筆者の[ブログ](https://shinjishioda.blogspot.com/)で公開予定です。
