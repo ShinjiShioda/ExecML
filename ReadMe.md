@@ -71,3 +71,7 @@ Publish Code<BR>最終実行形式の作成
 
     // exe directory is require at same directory with ExecML.csproj.
     dotnet publish -c release -r win-x64 -o .\exe --no-self-contained
+
+## Exe Binary
+Executable Binary Publish in my [Blog](https://shinjishioda.blogspot.com/).
+実行ファイルは、[ブログ](https://shinjishioda.blogspot.com/)で公開しています。
